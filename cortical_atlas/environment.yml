@@ -1,0 +1,25 @@
+name: nimh-meg-atlas
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - scipy
+  - matplotlib
+  - notebook
+  - mne>=1.6
+  - pyvista
+  - pyyaml
+  - h5py
+  - joblib
+  - tqdm
+  # FreeSurfer is installed separately (system-level)
+  - nibabel
+  - nilearn
+  - pandas
+  - pip:
+    - mne-bids>=0.14
+    - hdf5storage
+    - adjustText

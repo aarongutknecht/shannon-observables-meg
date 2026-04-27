@@ -1,0 +1,83 @@
+# ============================================================================
+# NIMH MEG Atlas Pipeline – Configuration
+# ============================================================================
+# All paths are relative to the project root unless they start with /
+
+# ── Dataset ─────────────────────────────────────────────────────────────────
+dataset:
+  openneuro_id: "ds005752"
+  clone_dir: "data/ds005752"
+  session: "ses-01"
+  task: "rest"
+  run: "run-01"
+
+# ── Subjects ────────────────────────────────────────────────────────────────
+subjects:
+  # Subject list: one sub-ONXXXXX per line (comments and blanks ignored)
+  subjects_file: "subjects.txt"
+
+# ── FreeSurfer / FastSurfer ─────────────────────────────────────────────────
+freesurfer:
+  subjects_dir: "derivatives/fastsurfer"
+
+# ── Results ─────────────────────────────────────────────────────────────────
+results:
+  root: "results"
+  transforms_dir: "derivatives/transforms"
+  fwd_dir: "derivatives/forward"
+  source_reconstructed_dir: "derivatives/source_timeseries"
+
+# ── MEG preprocessing ──────────────────────────────────────────────────────
+# Follows Barnett et al. preprocessing methodology
+preproc:
+  # Maximum minutes of resting-state data to use (null = full recording)
+  max_minutes: 6.0
+  # Bandpass filter (Hz) — 150 Hz low-pass per Barnett et al.
+  l_freq: 1.0
+  h_freq: 150.0
+  # Notch filter frequencies (Hz) — 60 Hz mains (US) + harmonic
+  notch_freqs: [60.0, 120.0]
+  # Resample target (Hz); Nyquist = 150 Hz → 300 Hz is minimal
+  resample_freq: 300.0
+  # Pick channel types (ref_meg kept during filtering for CTF compensation,
+  # then dropped before epoching — see pipeline script)
+  pick_types:
+    meg: true
+    ref_meg: true
+  # ── Epoching ──
+  # Fixed-length epoch duration (seconds) for artefact rejection
+  epoch_duration: 2.0
+  # ── Artefact rejection ──
+  # Stage 1: coarse peak-to-peak rejection (T for mag)
+  # Set to null to skip; CTF 275 are magnetometers → use 'mag'
+  reject_ptp:
+    mag: 4.0e-12   # 4 pT — conservative first pass
+
+# ── Source reconstruction ──────────────────────────────────────────────────
+source:
+  # Single-shell BEM for MEG-only data
+  bem_ico: 4
+  # Source space
+  spacing: "ico4"
+  # Forward
+  mindist: 5.0
+  # Covariance — computed from clean epochs (not continuous)
+  cov_method: "empirical"
+  # Beamformer
+  reg: 0.05               # 5% regularisation (Barnett et al.)
+  pick_ori: "max-power"
+  weight_norm: "nai"
+  # DKTatlas label time-course extraction
+  label_mode: "pca_flip"
+
+# ── Logging ────────────────────────────────────────────────────────────────
+logging:
+  dir: "logs"
+  level: "INFO"    # DEBUG, INFO, WARNING, ERROR
+
+# ── Pipeline control ──────────────────────────────────────────────────────
+pipeline:
+  # If true, skip steps whose output already exists
+  skip_existing: true
+  # If true, only print what would be done
+  dry_run: false

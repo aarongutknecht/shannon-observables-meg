@@ -1,0 +1,33 @@
+# Local environments and tooling
+.venv/
+.claude/
+.codex
+.codex/
+
+# Raw data and derivatives
+cortical_atlas/data/
+derivatives/
+logs/
+
+# User-cloned external toolboxes
+cortical_atlas/MVGC2/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# MATLAB
+*.asv
+*.m~
+
+# Local caches
+cortical_atlas/figures/.cache/
+
+# Timestamped analysis output folders
+cortical_atlas/results/gc_analysis/gc_dkt62_????-*/
+
+# OS
+.DS_Store
+Thumbs.db
