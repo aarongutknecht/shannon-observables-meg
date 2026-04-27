@@ -10,7 +10,9 @@ The available arXiv preprint uses the earlier title:
 
 This public repository contains the cortical atlas MEG analysis used in the
 manuscript. It estimates redundancy and vulnerability from state-space Granger
-causality on resting-state MEG source time series from healthy adults.
+causality on resting-state MEG source time series from healthy adults in the
+[NIMH Healthy Research Volunteer Dataset](https://openneuro.org/datasets/ds005752)
+(OpenNeuro `ds005752`).
 
 ## Contents
 
@@ -23,16 +25,27 @@ See `cortical_atlas/README.md` for setup, data requirements, and usage.
 
 ## Data
 
-Source-reconstructed time series (Level 2 input):
-https://doi.org/10.5281/zenodo.19250047
+Raw MEG and MRI data are available from OpenNeuro:
+
+- [OpenNeuro ds005752: NIMH Healthy Research Volunteer Dataset](https://openneuro.org/datasets/ds005752)
+
+Source-reconstructed time series used as input to the Granger causality stage
+are available from Zenodo:
+
+- https://doi.org/10.5281/zenodo.19250047
+
+The repository includes the derived GC results needed to regenerate the paper
+figure under `cortical_atlas/results/gc_analysis/gc_dkt62_results/`.
 
 ## Requirements
 
 The full Python environment for this release is defined in:
+
 - `cortical_atlas/environment.yml`
 
 MATLAB is required for the state-space GC stage together with the MVGC2 toolbox:
-https://github.com/lcbarnett/MVGC2
+
+- https://github.com/lcbarnett/MVGC2
 
 ## Citation
 
@@ -49,8 +62,4 @@ Please cite the arXiv preprint by its preprint title:
   primaryClass={cs.IT},
   url={https://arxiv.org/abs/2504.15779}
 }
-```
 
-## License
-
-MIT — see `LICENSE`.
