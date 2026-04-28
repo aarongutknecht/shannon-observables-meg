@@ -21,7 +21,9 @@ causality on resting-state MEG source time series from healthy adults in the
 Surface-based cortical analysis across 62 DKT atlas regions in 54 healthy
 adults using the OpenNeuro dataset `ds005752`.
 
-See `cortical_atlas/README.md` for setup, data requirements, and usage.
+See `cortical_atlas/README.md` for full system requirements, installation,
+final results, demo options, expected outputs, usage, and reproduction
+instructions.
 
 ## Data
 
@@ -32,20 +34,10 @@ Raw MEG and MRI data are available from OpenNeuro:
 Source-reconstructed time series used as input to the Granger causality stage
 are available from Zenodo:
 
-- https://doi.org/10.5281/zenodo.19250047
+- [Zenodo source-reconstructed time series](https://doi.org/10.5281/zenodo.19250047)
 
 The repository includes the derived GC results needed to regenerate the paper
 figure under `cortical_atlas/results/gc_analysis/gc_dkt62_results/`.
-
-## Requirements
-
-The full Python environment for this release is defined in:
-
-- `cortical_atlas/environment.yml`
-
-MATLAB is required for the state-space GC stage together with the MVGC2 toolbox:
-
-- https://github.com/lcbarnett/MVGC2
 
 ## Citation
 
@@ -62,4 +54,8 @@ Please cite the arXiv preprint by its preprint title:
   primaryClass={cs.IT},
   url={https://arxiv.org/abs/2504.15779}
 }
+```
 
+## License
+
+MIT — see `LICENSE`.

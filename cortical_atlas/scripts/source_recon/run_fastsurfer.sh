@@ -8,7 +8,7 @@
 #   bash scripts/source_recon/run_fastsurfer.sh sub-ON08710      # single subject
 #
 # Prerequisites:
-#   - Docker installed, image deepmi/fastsurfer:latest pulled
+#   - Docker installed, image deepmi/fastsurfer:cpu-v2.4.2 pulled
 #   - FreeSurfer license path exported as $FREESURFER_LICENSE
 #   - T1w NIfTI in data/ds005752/<sub>/ses-01/anat/
 #
